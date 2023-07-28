@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { market } from './database'
 import { Products } from './interfaces'
 
-let count = 0
+let count: number = 0
 
 export const createNewProduct = (req: Request, res: Response): Response => {
     count++
@@ -39,7 +39,7 @@ export const getProductsById = (req: Request, res: Response): Response => {
 
 export const attProduct = (req: Request, res: Response): Response => {
     const index = market.findIndex(item => item.id === Number(res.locals.id))
-    const attItem = {
+    const attItem: Products = {
         ...market[index],
         ...req.body
     }
